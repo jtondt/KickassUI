@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="KickassUI.ParallaxCarousel.CartPage">
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Button x:Name="BackButton" 
+                            VerticalOptions="StartAndExpand"
+                            HorizontalOptions="Start" 
+                            HeightRequest="40"
+                            WidthRequest="80"
+                            Margin="5,20,0,0"
+                            ImageSource="backButton.png"
+                            Clicked="BackButton_Clicked" />
+
+            <Label Text="Cart" VerticalOptions="StartAndExpand" HorizontalOptions="Center" TextColor="Maroon" FontSize="72" />
+
+            <ListView x:Name="MyListView"
+                            ItemsSource="{Binding Items}"
+                            ItemTapped="Handle_ItemTapped"
+                            CachingStrategy="RecycleElement"
+                            BackgroundColor="White">
+                <d:ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Item 1</x:String>
+                        <x:String>Item 2</x:String>
+                        <x:String>Item 3</x:String>
+                        <x:String>Item 4</x:String>
+                        <x:String>Item 5</x:String>
+                    </x:Array>
+                </d:ListView.ItemsSource>
+                <!--Built in Cells-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding .}" d:Text="{Binding .}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <!--Custom View Cells
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Text}" 
+                           d:Text="{Binding .}"
+                           Style="{DynamicResource ListItemTextStyle}" />
+                                <Label Text="{Binding Detail}" 
+                           d:Text="Detail"
+                           Style="{DynamicResource ListItemDetailTextStyle}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+
+
+
+
+
+
+<!--<ViewCell>
+    <StackLayout>
+        <Label Text="{Binding Text}" 
+                           d:Text="{Binding .}"
+                           Style="{DynamicResource ListItemTextStyle}" />
+        <Label Text="{Binding Detail}" 
+                           d:Text="Detail"
+                           Style="{DynamicResource ListItemDetailTextStyle}"/>
+
+
+    </StackLayout>
+
+    </ViewCell> -->
